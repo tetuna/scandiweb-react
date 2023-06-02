@@ -7,13 +7,52 @@
 body {
   min-height: 100vh;
   font-family: monospace, sans-serif;
-  color: #353535;
+  color: #696868;
   letter-spacing: 0.5px;
+  background: #f9f9f9;
+}
+
+.btn {
+  padding: 0.6rem 1rem;
+  border: none;
+  letter-spacing: 0.7px;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #696868;
+  border-radius: 6px;
+  font-family: system-ui, monospace, sans-serif;
+  font-weight: 600;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 0px 2px;
+  transition: 0.07s;
+}
+.btn:hover {
+  scale: 1.15;
+}
+
+.header-dynamic {
+  display: flex;
+  padding: 1rem 0;
+  border-bottom: 1px solid #9f9f9f;
+}
+.header-dynamic .title {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.header-dynamic .buttons {
+  display: flex;
+  justify-content: end;
+  width: 50%;
+}
+.header-dynamic .buttons button:first-child {
+  margin-right: 1.5rem;
 }
 
 main {
   min-height: 100vh;
-  padding-bottom: 100px;
+  max-width: 1500px;
+  margin: auto;
+  padding-bottom: 80px;
 }
 
 footer {
@@ -27,9 +66,83 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100px;
-  bottom: 100px;
-  border-top: 1px solid grey;
+  height: 80px;
+  bottom: 80px;
+  max-width: 1500px;
+  margin: auto;
+  border-top: 1px solid #9f9f9f;
+}
+
+@media (max-width: 1536px) {
+  main, .footer-content {
+    max-width: 1280px;
+  }
+}
+@media (max-width: 1280px) {
+  main, .footer-content {
+    max-width: 1024px;
+  }
+
+  .header-dynamic .title {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 1024px) {
+  main, .footer-content {
+    max-width: 768px;
+  }
+}
+@media (max-width: 768px) {
+  main, .footer-content {
+    max-width: 640px;
+  }
+}
+@media (max-width: 640px) {
+  .header-dynamic {
+    margin: 0rem 0.5rem;
+  }
+  .header-dynamic .title {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    padding: 0.7rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  main {
+    max-width: 480px;
+  }
+
+  .footer-content {
+    max-width: calc( 480px - 0.7rem );
+  }
+}
+@media (max-width: 480px) {
+  main {
+    max-width: 380px;
+  }
+
+  .footer-content {
+    max-width: calc( 380px - 0.7rem );
+    font-size: 0.89rem;
+  }
+}
+@media (max-width: 380px) {
+  main, .footer-content {
+    width: 100%;
+  }
+
+  .header-dynamic .title {
+    width: 43%;
+    font-size: 1.05rem;
+  }
+  .header-dynamic .buttons {
+    width: 57%;
+  }
+  .header-dynamic .buttons .btn:first-child {
+    margin-right: 0.5rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

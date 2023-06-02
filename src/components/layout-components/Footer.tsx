@@ -1,11 +1,9 @@
-import React from 'react'
-
 export default function Footer() {
     return (
         <>
             <footer>
                 <div className="footer-content">
-                    <h1>FOOTER</h1>
+                    <span>Scandiweb Task - Giorgi Tetunashvili</span>
                 </div>
             </footer>
         </>

@@ -1,3 +1,6 @@
+@import variables
+$footer-height: 80px
+
 *
     margin: 0
     padding: 0
@@ -5,11 +8,43 @@
 body
     min-height: 100vh
     font-family: monospace, sans-serif
-    color: #353535
+    color: #696868
     letter-spacing: 0.5px
+    background: #f9f9f9
+.btn
+    padding: 0.6rem 1rem
+    border: none
+    letter-spacing: 0.7px
+    cursor: pointer
+    background-color: #ffffff
+    color: #696868
+    border-radius: 6px
+    font-family: system-ui, monospace, sans-serif
+    font-weight: $fw-semibold
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 0px 2px
+    transition: 0.07s
+    &:hover
+        scale: 1.15
+.header-dynamic
+    display: flex
+    padding: 1rem 0
+    border-bottom: 1px solid #9f9f9f
+    .title
+        width: 50%
+        display: flex
+        align-items: center
+    .buttons
+        display: flex
+        justify-content: end
+        width: 50%
+        button
+            &:first-child
+                margin-right: 1.5rem
 main
     min-height: 100vh
-    padding-bottom: 100px
+    max-width: 1500px
+    margin: auto
+    padding-bottom: $footer-height
 footer
     position: absolute
     height: 0px
@@ -19,6 +54,54 @@ footer
     display: flex
     align-items: center
     justify-content: center
-    height: 100px
-    bottom: 100px
-    border-top: 1px solid grey
+    height: $footer-height
+    bottom: $footer-height
+    max-width: 1500px
+    margin: auto
+    border-top: 1px solid #9f9f9f
+
+@media (max-width: $xxl)
+    main, .footer-content
+        max-width: $xl
+@media (max-width: $xl)
+    main, .footer-content
+        max-width: $lg
+    .header-dynamic
+        .title
+            font-size: 1.5rem
+@media (max-width: $lg)
+    main, .footer-content
+        max-width: $md
+@media (max-width: $md)
+    main, .footer-content
+        max-width: $sm
+@media (max-width: $sm)
+    .header-dynamic
+        margin: 0rem 0.5rem
+        .title
+            font-size: 1.2rem
+    .btn
+        padding: 0.7rem 0.5rem
+        font-size: 0.75rem
+    main
+        max-width: $xsm
+    .footer-content
+        max-width: calc( #{$xsm} - 0.7rem )
+@media (max-width: $xsm)
+    main
+        max-width: $xxsm
+    .footer-content
+        max-width: calc( #{$xxsm} - 0.7rem )
+        font-size: 0.89rem
+@media (max-width: $xxsm)
+    main, .footer-content
+        width: 100%
+    .header-dynamic
+        .title
+            width: 43%
+            font-size: 1.05rem
+        .buttons
+            width: 57%
+            .btn
+                &:first-child
+                    margin-right: 0.5rem

@@ -1,10 +1,21 @@
-import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 export default function ProductAdd() {
-    const baseUrl = import.meta.env.VITE_APP_API_URL;
+    const navigate = useNavigate();
+
     return (
         <>
-            <h1>--Product Add Page--</h1>
+            <div className="product-list">
+                <div className="header-dynamic">
+                    <h1 className="title">
+                        Product Add
+                    </h1>
+                    <div className="buttons">
+                        <button className="btn" onClick={() => { navigate("/products") }}>Cancel</button>
+                        <button className="btn">Save</button>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

@@ -1,0 +1,89 @@
+@import ../../variables
+
+.products
+    display: grid
+    grid-template: repeat(4, 1fr)/repeat(4, 1fr)
+    flex-wrap: wrap
+    justify-content: space-between
+    gap: 1.8rem 1.2rem
+    padding: 1.5rem 0rem
+    .product
+        width: 100%
+        // padding: 1.2rem 0rem
+    .card
+        height: 100%
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 0px 2px
+        padding: 2rem
+        padding-top: 1rem
+        border-radius: 6px
+        text-align: center
+        div
+            margin-bottom: 1rem
+            &:last-child
+                margin-bottom: 0rem
+        .container
+            display: block
+            position: relative
+            padding-left: 35px
+            cursor: pointer
+            font-size: 22px
+            right: 1.6rem
+            bottom: 0.6rem
+            -webkit-user-select: none
+            -moz-user-select: none
+            -ms-user-select: none
+            user-select: none
+        /* Hide the browser's default checkbox */
+        .container input
+            position: absolute
+            opacity: 0
+            cursor: pointer
+            height: 0
+            width: 0
+        /* Create a custom checkbox */
+        .checkmark
+            position: absolute
+            top: 0
+            left: 0
+            height: 25px
+            width: 25px
+            background-color: #eee
+            border-radius: 5px
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 0px 2px
+        /* On mouse-over, add a grey background color */
+        .container:hover input ~ .checkmark
+            background-color: #ccc
+        /* When the checkbox is checked, add a blue background */
+        .container input:checked ~ .checkmark
+            background-color: #e04f4f
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after
+            content: ""
+            position: absolute
+            display: none
+        /* Show the checkmark when checked */
+        .container input:checked ~ .checkmark:after
+            display: block
+        /* Style the checkmark/indicator */
+        .container .checkmark:after
+            left: 8px
+            top: 3px
+            width: 6px
+            height: 12px
+            border: solid white
+            border-width: 0 3px 3px 0
+            border-bottom-right-radius: 2px
+            -webkit-transform: rotate(45deg)
+            -ms-transform: rotate(45deg)
+            transform: rotate(45deg)
+
+@media (max-width: $xl)
+    .products
+        grid-template: repeat(3, 1fr)/repeat(3, 1fr)
+@media (max-width: $md)
+    .products
+        grid-template: repeat(2, 1fr)/repeat(2, 1fr)
+
+@media (max-width: $sm)
+    .products
+        grid-template: repeat(1, 1fr)/repeat(1, 1fr)

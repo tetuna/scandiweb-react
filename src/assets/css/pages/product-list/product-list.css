@@ -1,3 +1,106 @@
+.products {
+  display: grid;
+  grid-template: repeat(4, 1fr)/repeat(4, 1fr);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.8rem 1.2rem;
+  padding: 1.5rem 0rem;
+}
+.products .product {
+  width: 100%;
+}
+.products .card {
+  height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 0px 2px;
+  padding: 2rem;
+  padding-top: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  /* Hide the browser's default checkbox */
+  /* Create a custom checkbox */
+  /* On mouse-over, add a grey background color */
+  /* When the checkbox is checked, add a blue background */
+  /* Create the checkmark/indicator (hidden when not checked) */
+  /* Show the checkmark when checked */
+  /* Style the checkmark/indicator */
+}
+.products .card div {
+  margin-bottom: 1rem;
+}
+.products .card div:last-child {
+  margin-bottom: 0rem;
+}
+.products .card .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 22px;
+  right: 1.6rem;
+  bottom: 0.6rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.products .card .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.products .card .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 0px 2px;
+}
+.products .card .container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.products .card .container input:checked ~ .checkmark {
+  background-color: #e04f4f;
+}
+.products .card .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.products .card .container input:checked ~ .checkmark:after {
+  display: block;
+}
+.products .card .container .checkmark:after {
+  left: 8px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  border-bottom-right-radius: 2px;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 
+@media (max-width: 1280px) {
+  .products {
+    grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .products {
+    grid-template: repeat(2, 1fr)/repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .products {
+    grid-template: repeat(1, 1fr)/repeat(1, 1fr);
+  }
+}
 
 /*# sourceMappingURL=product-list.css.map */
