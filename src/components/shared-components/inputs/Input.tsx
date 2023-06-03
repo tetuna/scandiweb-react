@@ -1,10 +1,20 @@
-import React from 'react'
+type PropsType = {
+    id: string,
+    type?: string,
+    errors?: string,
+    label: string,
+    // addRemoveSku: (sku: string) => void;
+}
 
-export default function Input(props) {
+export default function Input({ id, type = "text", label, errors }: PropsType) {
 
     return (
         <>
-        <h2>--Input Here--</h2>
+            <div className="single-input">
+                <label htmlFor={id}>{label}</label>
+                <input type={type} id={id} />
+                <div className="errors">{errors}</div>
+            </div>
         </>
     )
 }

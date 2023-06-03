@@ -5,30 +5,20 @@ $footer-height: 80px
     margin: 0
     padding: 0
     box-sizing: border-box
+html, body
+    height: 100%
+    margin: 0
+
 body
     min-height: 100vh
     font-family: monospace, sans-serif
-    color: #696868
+    color: $text-color
     letter-spacing: 0.5px
     background: #f9f9f9
-.btn
-    padding: 0.6rem 1rem
-    border: none
-    letter-spacing: 0.7px
-    cursor: pointer
-    background-color: #ffffff
-    color: #696868
-    border-radius: 6px
-    font-family: system-ui, monospace, sans-serif
-    font-weight: $fw-semibold
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 0px 2px
-    transition: 0.07s
-    &:hover
-        scale: 1.15
 .header-dynamic
     display: flex
     padding: 1rem 0
-    border-bottom: 1px solid #9f9f9f
+    // border-bottom: 1px solid #9f9f9f
     .title
         width: 50%
         display: flex
@@ -41,39 +31,82 @@ body
             &:first-child
                 margin-right: 1.5rem
 main
-    min-height: 100vh
+    min-height: 100%
     max-width: 1500px
     margin: auto
-    padding-bottom: $footer-height
+    margin-bottom: -$footer-height
+.btn
+    @include round-with-shadow
+    padding: 0.6rem 1rem
+    border: none
+    letter-spacing: 0.7px
+    cursor: pointer
+    background-color: #ffffff
+    color: $text-color
+    text-align: center
+    font-family: system-ui, monospace, sans-serif
+    font-weight: $fw-semibold
+    transition: 0.07s
+    &:hover
+        scale: 1.15
+.btn.active-type
+    scale: 1
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(34, 197, 94) 0px 0px 0px 1.5px
+.single-input, .type-switcher
+    display: inline-block
+    width: 50%
+    padding: 1rem 0rem
+    &:nth-child(odd)
+        padding-right: 0.75rem
+    &:nth-child(even)
+        padding-left: 0.75rem
+    label
+        display: flex
+        padding-bottom: 0.8rem
+    input, button
+        @include round-with-shadow
+        padding: 0.7rem 1rem
+        width: 100%
+        border: none
+        display: flex
+        flex-grow: 1
+        color: $text-color
+        letter-spacing: 0.5px
+        &:focus
+            outline: none
+    .buttons
+        display: flex
+        gap: 1.5rem
+        cursor: pointer
+        button
+
 footer
-    position: absolute
-    height: 0px
-    width: 100%
-.footer-content
     position: relative
     display: flex
+    width: 100%
     align-items: center
     justify-content: center
     height: $footer-height
-    bottom: $footer-height
     max-width: 1500px
     margin: auto
     border-top: 1px solid #9f9f9f
+.footer-push
+    height: $footer-height
 
 @media (max-width: $xxl)
-    main, .footer-content
+    main, footer
         max-width: $xl
 @media (max-width: $xl)
-    main, .footer-content
+    main, footer
         max-width: $lg
     .header-dynamic
         .title
             font-size: 1.5rem
 @media (max-width: $lg)
-    main, .footer-content
+    main, footer
         max-width: $md
 @media (max-width: $md)
-    main, .footer-content
+    main, footer
         max-width: $sm
 @media (max-width: $sm)
     .header-dynamic
@@ -85,16 +118,16 @@ footer
         font-size: 0.75rem
     main
         max-width: $xsm
-    .footer-content
+    footer
         max-width: calc( #{$xsm} - 0.7rem )
 @media (max-width: $xsm)
     main
         max-width: $xxsm
-    .footer-content
+    footer
         max-width: calc( #{$xxsm} - 0.7rem )
         font-size: 0.89rem
 @media (max-width: $xxsm)
-    main, .footer-content
+    main, footer
         width: 100%
     .header-dynamic
         .title

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import ProductCard from 'components/shared-components/specific/ProductCard';
-import 'assets/css/pages/product-list/product-list.css'
 import { useNavigate } from "react-router-dom";
+import 'assets/css/pages/product-list/product-list.css'
 
 export default function ProductList() {
     const baseUrl: string = import.meta.env.VITE_APP_API_URL;
