@@ -4,7 +4,7 @@ type PropsType = {
     label: string,
     errors?: string,
     activeType: string,
-    setActiveType: (type: string) => void;
+    setActiveType: (type: "dvd" | "book" | "furniture") => void;
     // addRemoveSku: (sku: string) => void;
 }
 

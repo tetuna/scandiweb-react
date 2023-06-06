@@ -1,3 +1,18 @@
+.d-none {
+  display: none;
+}
+
+@keyframes bounce-anim {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +29,7 @@ body {
   font-family: monospace, sans-serif;
   color: #696868;
   letter-spacing: 0.5px;
-  background: #f9f9f9;
+  background: #e9eef2;
 }
 
 .header-dynamic {
@@ -25,6 +40,10 @@ body {
   width: 50%;
   display: flex;
   align-items: center;
+}
+.header-dynamic .title span {
+  margin-left: 0.8rem;
+  animation: 0.15s bounce-anim;
 }
 .header-dynamic .buttons {
   display: flex;
@@ -59,46 +78,10 @@ main {
 .btn:hover {
   scale: 1.15;
 }
-
-.btn.active-type {
-  scale: 1;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, #22c55e 0px 0px 0px 1.5px;
+.btn:active {
+  scale: 0.95;
 }
 
-.single-input, .type-switcher {
-  display: inline-block;
-  width: 50%;
-  padding: 1rem 0rem;
-}
-.single-input:nth-child(odd), .type-switcher:nth-child(odd) {
-  padding-right: 0.75rem;
-}
-.single-input:nth-child(even), .type-switcher:nth-child(even) {
-  padding-left: 0.75rem;
-}
-.single-input label, .type-switcher label {
-  display: flex;
-  padding-bottom: 0.8rem;
-}
-.single-input input, .single-input button, .type-switcher input, .type-switcher button {
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 0px 2px;
-  border-radius: 6px;
-  padding: 0.7rem 1rem;
-  width: 100%;
-  border: none;
-  display: flex;
-  flex-grow: 1;
-  color: #696868;
-  letter-spacing: 0.5px;
-}
-.single-input input:focus, .single-input button:focus, .type-switcher input:focus, .type-switcher button:focus {
-  outline: none;
-}
-.single-input .buttons, .type-switcher .buttons {
-  display: flex;
-  gap: 1.5rem;
-  cursor: pointer;
-}
 footer {
   position: relative;
   display: flex;
@@ -148,7 +131,7 @@ footer {
   }
 
   .btn {
-    padding: 0.7rem 0.5rem;
+    padding: 0.8rem 0.5rem;
     font-size: 0.75rem;
   }
 

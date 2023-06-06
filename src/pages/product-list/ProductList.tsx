@@ -37,11 +37,11 @@ export default function ProductList() {
             <div className="product-list">
                 <div className="header-dynamic">
                     <h1 className="title">
-                        Product List
+                        Product<span>List</span>
                     </h1>
                     <div className="buttons">
                         <button className="btn" onClick={() => { alert(skuArray); console.table(skuArray); }}>MASS DELETE</button>
-                        <button className="btn" onClick={()=>{navigate("/products/add")}}>ADD</button>
+                        <button className="btn" onClick={() => { navigate("/products/add") }}>ADD</button>
                     </div>
                 </div>
                 <div className="products">
