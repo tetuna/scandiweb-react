@@ -21,9 +21,12 @@
   gap: 1.8rem 1.2rem;
   padding: 3.5rem 0rem;
 }
+.products .product.deleting {
+  animation: 0.25s bounce-out-anim;
+}
 .products .product {
   width: 100%;
-  animation: 0.15s bounce-anim;
+  animation: 0.15s bounce-in-anim;
 }
 .products .card {
   height: 100%;

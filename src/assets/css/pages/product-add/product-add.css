@@ -26,7 +26,7 @@
   display: inline-block;
   width: 50%;
   padding: 1rem 0rem;
-  animation: 0.15s bounce-anim;
+  animation: 0.15s bounce-in-anim;
 }
 .single-input:nth-child(odd), .type-switcher:nth-child(odd) {
   padding-right: 1.5rem;
@@ -50,7 +50,7 @@
   flex-grow: 1;
   color: #696868;
   letter-spacing: 0.5px;
-  animation: 0.15s bounce-anim;
+  animation: 0.15s bounce-in-anim;
 }
 .single-input input:focus, .single-input button:focus, .type-switcher input:focus, .type-switcher button:focus {
   outline: none;

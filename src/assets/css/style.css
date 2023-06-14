@@ -2,7 +2,7 @@
   display: none;
 }
 
-@keyframes bounce-anim {
+@keyframes bounce-in-anim {
   0% {
     transform: scale(0);
   }
@@ -11,6 +11,17 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+@keyframes bounce-out-anim {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(0);
   }
 }
 * {
@@ -43,7 +54,7 @@ body {
 }
 .header-dynamic .title span {
   margin-left: 0.8rem;
-  animation: 0.15s bounce-anim;
+  animation: 0.15s bounce-in-anim;
 }
 .header-dynamic .buttons {
   display: flex;

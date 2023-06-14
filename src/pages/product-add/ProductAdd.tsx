@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import Input from "components/shared-components/inputs/Input";
 import TypeSwitcher from "components/shared-components/specific/TypeSwicher";
 import 'assets/css/pages/product-add/product-add.css'
@@ -8,12 +9,12 @@ type DataType = {
     sku: string,
     name: string,
     price: number,
-    productType: string,
-    size?: string,
-    weight?: string,
-    height?: string,
-    width?: string,
-    lenght?: string,
+    product_type: string,
+    size?: number | null,
+    weight?: number | null,
+    height?: number | null,
+    width?: number | null,
+    length?: number | null,
 }
 
 type DescriptionType = {
@@ -24,6 +25,7 @@ type DescriptionType = {
 
 export default function ProductAdd() {
     const navigate = useNavigate();
+    const apiUrl: string = import.meta.env.VITE_APP_API_URL;
     const decimalHtmlPattern = "[0-9]+(\.[0-9][0-9]?)?"
     const description: DescriptionType = {
         "dvd": "Please provide the size (in MB) of the DVD-disc",
@@ -34,24 +36,45 @@ export default function ProductAdd() {
     const formRef = useRef<HTMLFormElement>(null);
     const submitBtnRef = useRef<HTMLButtonElement>(null);
 
+    const isJson = (str: any) => {
+        try {
+            JSON.parse(str);
+        } catch (e) {
+            return false;
+        }
+        return true;
+    }
+
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        // console.log(event.target?.["lenght"].value, event.target.sku.value, event.target.name.value);
+        // console.log(event.target?.["length"].value, event.target.sku.value, event.target.name.value);
         // console.log(event.target);
 
         let data: DataType = {
             "sku": event.target.sku.value,
             "name": event.target.name.value,
             "price": event.target.price.value,
-            "size": event.target?.size === undefined ? "" : event.target?.size.value,
-            "weight": event.target?.weight === undefined ? "" : event.target?.weight.value,
-            "height": event.target?.height === undefined ? "" : event.target?.height.value,
-            "width": event.target?.width === undefined ? "" : event.target?.width.value,
-            "lenght": event.target?.lenght === undefined ? "" : event.target?.lenght.value,
-            "productType": activeType
+            "size": event.target?.size !== undefined ? Number(event.target?.size.value) : null,
+            "weight": event.target?.weight !== undefined ? Number(event.target?.weight.value) : null,
+            "height": event.target?.height !== undefined ? Number(event.target?.height.value) : null,
+            "width": event.target?.width !== undefined ? Number(event.target?.width.value) : null,
+            "length": event.target?.length !== undefined ? Number(event.target?.length.value) : null,
+            "product_type": activeType
         }
-        
-        console.log(data);
+
+        console.log(event.target?.length.value);
+
+        let jdata = JSON.stringify(data);
+        axios.post(apiUrl + 'product/saveApi', jdata)
+            .then(function (res) {
+                if (res.status == 200) {
+                    alert("created!");
+                    navigate("/products")
+                }
+            })
+            .catch(function (error) {
+                console.log(error.response);
+            });
     }
 
     return (
@@ -130,11 +153,11 @@ export default function ProductAdd() {
                                                 title="Please enter the width following format (ex: 12.05 or 12)"
                                             />
                                             <Input
-                                                id="#lenght"
-                                                name="lenght"
-                                                label="Lenght"
+                                                id="#length"
+                                                name="length"
+                                                label="Length"
                                                 pattern={decimalHtmlPattern}
-                                                title="Please enter the lenght following format (ex: 12.05 or 12)"
+                                                title="Please enter the length following format (ex: 12.05 or 12)"
                                             />
                                         </div>
                                     </>
