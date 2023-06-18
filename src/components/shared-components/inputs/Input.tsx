@@ -4,15 +4,15 @@ type PropsType = {
     id: string,
     type?: string,
     name: string,
-    errors?: string,
     label: string,
     pattern?: string,
     title?: string,
     required?: boolean,
+    error?: string | null
     // addRemoveSku: (sku: string) => void;
 }
 
-export default function Input({ id, type = "text", name, label, errors, pattern, title, required = true }: PropsType) {
+export default function Input({ id, type = "text", name, label, error, pattern, title, required = true }: PropsType) {
 
     const [valueOfInput, setValueOfInput] = useState<string>('');
 
@@ -37,7 +37,7 @@ export default function Input({ id, type = "text", name, label, errors, pattern,
                     value={valueOfInput}
                     required={required}
                 />
-                <div className="errors">{errors}</div>
+                {error ? <div className="error">{error}</div> : null}
             </div>
         </>
     )

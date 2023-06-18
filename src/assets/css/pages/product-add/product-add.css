@@ -2,7 +2,7 @@
   display: none;
 }
 
-@keyframes bounce-anim {
+@keyframes bounce-in-anim {
   0% {
     transform: scale(0);
   }
@@ -11,6 +11,17 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+@keyframes bounce-out-anim {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(0);
   }
 }
 .product-inputs {
@@ -25,7 +36,7 @@
 .single-input, .type-switcher {
   display: inline-block;
   width: 50%;
-  padding: 1rem 0rem;
+  padding: 1.5rem 0rem;
   animation: 0.15s bounce-in-anim;
 }
 .single-input:nth-child(odd), .type-switcher:nth-child(odd) {
@@ -59,6 +70,13 @@
   display: flex;
   gap: 3rem;
   cursor: pointer;
+}
+.single-input .error, .type-switcher .error {
+  float: left;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #e04f4f;
+  animation: 0.15s bounce-in-anim;
 }
 
 .type-switcher button {

@@ -45,7 +45,7 @@ export default function ProductCard({ data, addRemoveSku, deleting }: PropsType)
         <>
             <div className={`product${deleting ? " deleting" : ""}`}>
                 <div className="card">
-                    <label className="container">
+                    <label className="checkbox-container">
                         <input type="checkbox" className=".delete-checkbox" />
                         <span
                             className="checkmark"

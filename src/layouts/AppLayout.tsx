@@ -10,7 +10,7 @@ export default function AppLayout() {
         <Outlet />
         {/* <div className="footer-push"></div> */}
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }

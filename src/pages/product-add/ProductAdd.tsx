@@ -33,6 +33,7 @@ export default function ProductAdd() {
         "furniture": "Please provide dimensions in HxWxL format of the furniture",
     }
     const [activeType, setActiveType] = useState<"dvd" | "book" | "furniture">("dvd")
+    const [validationErrors, setValidationErrors] = useState<{ input: string, message: string }>({ input: "", message: "" })
     const formRef = useRef<HTMLFormElement>(null);
     const submitBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -47,13 +48,10 @@ export default function ProductAdd() {
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        // console.log(event.target?.["length"].value, event.target.sku.value, event.target.name.value);
-        // console.log(event.target);
-
         let data: DataType = {
             "sku": event.target.sku.value,
             "name": event.target.name.value,
-            "price": event.target.price.value,
+            "price": Number(event.target.price.value),
             "size": event.target?.size !== undefined ? Number(event.target?.size.value) : null,
             "weight": event.target?.weight !== undefined ? Number(event.target?.weight.value) : null,
             "height": event.target?.height !== undefined ? Number(event.target?.height.value) : null,
@@ -65,7 +63,15 @@ export default function ProductAdd() {
         console.log(event.target?.length.value);
 
         let jdata = JSON.stringify(data);
-        axios.post(apiUrl + 'product/saveApi', jdata)
+        console.log("JDATA: ", jdata);
+
+        let params = new URLSearchParams();
+        params.append('product', jdata);
+        axios({
+            method: 'post',
+            url: apiUrl + 'product/saveApi',
+            data: params,
+        })
             .then(function (res) {
                 if (res.status == 200) {
                     alert("created!");
@@ -73,7 +79,8 @@ export default function ProductAdd() {
                 }
             })
             .catch(function (error) {
-                console.log(error.response);
+                console.log(error.response?.data);
+                setValidationErrors(error.response?.data?.error);
             });
     }
 
@@ -96,21 +103,24 @@ export default function ProductAdd() {
                             name="sku"
                             label="SKU"
                             pattern="[A-Za-z0-9].{1,128}"
-                            title="Alphabets only [A-Z a-z]"
+                            title="Alphabets and numbers only: [A-Z a-z 0-9]"
+                            error={validationErrors?.input == "sku" ? validationErrors?.message : null}
                         />
                         <Input
                             id="#name"
                             name="name"
                             label="Name"
                             pattern="[A-Za-zა-ჰ0-9 ].{1,128}"
-                            title="Alphabets and numbers only [A-Z a-z ა-ჰ A-ẞ ä-ß 0-9]"
+                            title="Alphabets, numbers and some special characters only: []().,- [A-Z a-z ა-ჰ 0-9]"
+                            error={validationErrors?.input == "name" ? validationErrors?.message : null}
                         />
                         <Input
                             id="#price"
                             name="price"
                             label="Price"
                             pattern={decimalHtmlPattern}
-                            title="Please enter the price following format (ex: 12.05 or 12)"
+                            title="Please enter the price following format (ex: 1.05 or 1)"
+                            error={validationErrors?.input == "price" ? validationErrors?.message : null}
                         />
                         <TypeSwitcher id="#productType" label="Type" activeType={activeType} setActiveType={setActiveType} />
                         <div className="special-attributes">
@@ -121,7 +131,7 @@ export default function ProductAdd() {
                                         name="size"
                                         label="Size (in MB)"
                                         pattern={decimalHtmlPattern}
-                                        title="Please enter the size following format (ex: 12.05 or 12)"
+                                        title="Please enter the size following format (ex: 1.05 or 1)"
                                     />
                                 </>
                                 :
@@ -132,7 +142,7 @@ export default function ProductAdd() {
                                             name="weight"
                                             label="Weight (in Kg)"
                                             pattern={decimalHtmlPattern}
-                                            title="Please enter the weight following format (ex: 12.05 or 12)"
+                                            title="Please enter the weight following format (ex: 1.05 or 1)"
                                         />
                                     </>
                                     :
@@ -143,21 +153,21 @@ export default function ProductAdd() {
                                                 name="height"
                                                 label="Height"
                                                 pattern={decimalHtmlPattern}
-                                                title="Please enter the height following format (ex: 12.05 or 12)"
+                                                title="Please enter the height following format (ex: 1.05 or 1)"
                                             />
                                             <Input
                                                 id="#width"
                                                 name="width"
                                                 label="Width"
                                                 pattern={decimalHtmlPattern}
-                                                title="Please enter the width following format (ex: 12.05 or 12)"
+                                                title="Please enter the width following format (ex: 1.05 or 1)"
                                             />
                                             <Input
                                                 id="#length"
                                                 name="length"
                                                 label="Length"
                                                 pattern={decimalHtmlPattern}
-                                                title="Please enter the length following format (ex: 12.05 or 12)"
+                                                title="Please enter the length following format (ex: 1.05 or 1)"
                                             />
                                         </div>
                                     </>
