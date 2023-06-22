@@ -33,6 +33,10 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, #22c55e 0px 0px 0px 1.5px;
 }
 
+.single-input.error input {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, #e04f4f 0px 0px 0px 1.5px;
+}
+
 .single-input, .type-switcher {
   display: inline-block;
   width: 50%;
@@ -82,6 +86,24 @@
 .type-switcher button {
   font-size: 1rem;
   justify-content: center;
+  line-height: 1.2rem;
+}
+.type-switcher .circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 21px;
+  height: 21px;
+  border-radius: 16px;
+  background-image: linear-gradient(to right, #f2eeee 0%, #d5d7eb 100%);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.5) 0px 1px 3px -1px;
+  transition: 0.07s;
+}
+.type-switcher .icon {
+  margin-right: 0.7rem;
+}
+.type-switcher img {
+  width: 11px;
 }
 
 .special-attributes {
@@ -112,6 +134,23 @@
   font-weight: bold;
 }
 
+@media (max-width: 1024px) {
+  .single-input:nth-child(odd), .type-switcher:nth-child(odd) {
+    padding-right: 0.5rem;
+  }
+  .single-input:nth-child(even), .type-switcher:nth-child(even) {
+    padding-left: 0.5rem;
+  }
+  .single-input .buttons, .type-switcher .buttons {
+    gap: 1rem;
+  }
+  .single-input .btn, .type-switcher .btn {
+    padding: 0.9rem 0.6rem;
+  }
+  .single-input .icon, .type-switcher .icon {
+    margin-right: 0.6rem;
+  }
+}
 @media (max-width: 768px) {
   .single-input, .type-switcher {
     width: 100%;
@@ -123,7 +162,22 @@
     padding-left: 0rem;
   }
   .single-input .buttons, .type-switcher .buttons {
-    gap: 1rem;
+    gap: 1.5rem;
+  }
+}
+@media (max-width: 380px) {
+  .type-switcher .buttons {
+    flex-direction: column;
+  }
+  .type-switcher .buttons .btn {
+    font-size: 0.9rem;
+  }
+  .type-switcher .buttons .btn:hover {
+    scale: 1;
+  }
+
+  .single-input label {
+    font-size: 0.9rem;
   }
 }
 

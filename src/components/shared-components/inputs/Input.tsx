@@ -9,10 +9,18 @@ type PropsType = {
     title?: string,
     required?: boolean,
     error?: string | null
-    // addRemoveSku: (sku: string) => void;
 }
 
-export default function Input({ id, type = "text", name, label, error, pattern, title, required = true }: PropsType) {
+export default function Input({
+    id,
+    type = "text",
+    name,
+    label,
+    error,
+    pattern,
+    title,
+    required = true
+}: PropsType) {
 
     const [valueOfInput, setValueOfInput] = useState<string>('');
 
@@ -22,7 +30,7 @@ export default function Input({ id, type = "text", name, label, error, pattern, 
 
     return (
         <>
-            <div className="single-input">
+            <div className={`single-input${error ? " error" : ""}`}>
                 <label htmlFor={id}>
                     {label}
                     {required ? <span className="required-circle" title="Required field"></span> : ""}

@@ -27,11 +27,9 @@
 .products {
   display: grid;
   grid-template: auto/repeat(4, 1fr);
-  flex-wrap: wrap;
   justify-content: space-between;
   gap: 1.8rem 1.2rem;
-  padding: 3.5rem 0rem;
-  padding-bottom: 80px;
+  padding: 1.5rem 0rem;
 }
 .products .product.deleting {
   animation: 0.25s bounce-out-anim;
@@ -40,9 +38,35 @@
   width: 100%;
   animation: 0.15s bounce-in-anim;
 }
+.products .icon {
+  position: relative;
+  display: inline-block;
+  height: 0px;
+  left: 15px;
+  bottom: 5px;
+  float: right;
+  cursor: pointer;
+}
+.products .icon:hover .circle {
+  scale: 1.2;
+}
+.products .icon .circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  background-image: linear-gradient(to right, #f2eeee 0%, #d5d7eb 100%);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.5) 0px 1px 3px -1px;
+  transition: 0.07s;
+}
+.products .icon img {
+  width: 17px;
+}
 .products .card {
   height: 100%;
-  padding: 2rem;
+  padding: 3rem 2rem;
   padding-top: 1rem;
   border-radius: 6px;
   text-align: center;
@@ -51,6 +75,9 @@
 }
 .products .card div {
   margin-bottom: 1rem;
+}
+.products .card div.sku {
+  margin-top: 1rem;
 }
 .products .card div:last-child {
   margin-bottom: 0rem;
@@ -61,8 +88,8 @@
   padding-left: 35px;
   cursor: pointer;
   font-size: 22px;
-  right: 1.6rem;
-  bottom: 0.6rem;
+  right: 1.4rem;
+  bottom: 0.4rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -84,6 +111,7 @@
   background-color: #eee;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 0px 2px;
+  transition: 0.07s;
 }
 .products .card .checkbox-container:hover input ~ .checkmark {
   background-color: #ccc;

@@ -12,11 +12,23 @@ $fw-semibold: 600
 $fw-bold: 700
 $fw-extrabold: 800
 
-
 $text-color: #696868
 
 .d-none
     display: none
+
+body::-webkit-scrollbar
+    width: 15px
+    border-radius: 30px
+
+body::-webkit-scrollbar-track
+    background: #ffffff
+    border-radius: 30px
+
+body::-webkit-scrollbar-thumb
+    background-color: #c3c7ec
+    border-radius: 30px
+    border: 4px solid #ffffff
 
 @mixin round-with-shadow
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 0px 2px

@@ -2,6 +2,22 @@
   display: none;
 }
 
+body::-webkit-scrollbar {
+  width: 15px;
+  border-radius: 30px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 30px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #c3c7ec;
+  border-radius: 30px;
+  border: 4px solid #ffffff;
+}
+
 @keyframes bounce-in-anim {
   0% {
     transform: scale(0);
@@ -40,17 +56,26 @@ body {
   font-family: monospace, sans-serif;
   color: #696868;
   letter-spacing: 0.5px;
-  background: #e9eef2;
+  padding: 0rem 1rem;
+  background-image: linear-gradient(to right, #f2eeee 0%, #d5d7eb 100%);
+}
+
+#root {
+  padding-bottom: 1rem;
 }
 
 .header-dynamic {
   display: flex;
-  padding: 1rem 0;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 .header-dynamic .title {
   width: 50%;
   display: flex;
   align-items: center;
+  font-size: 1.6rem;
 }
 .header-dynamic .title span {
   margin-left: 0.8rem;
@@ -61,14 +86,35 @@ body {
   justify-content: end;
   width: 50%;
 }
+.header-dynamic .buttons .icon {
+  margin-right: 0.7rem;
+}
+.header-dynamic .buttons .icon img {
+  width: 12px;
+}
+.header-dynamic .buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0.8rem;
+}
 .header-dynamic .buttons button:first-child {
   margin-right: 1.5rem;
 }
 
 main {
-  min-height: 100%;
+  min-height: calc(100vh - 80px - 1rem);
   max-width: 1500px;
   margin: auto;
+  padding-top: 1rem;
+}
+
+.btn.success:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, #22c55e 0px 0px 0px 1.5px;
+}
+
+.btn.danger:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, #e04f4f 0px 0px 0px 1.5px;
 }
 
 .btn {
@@ -87,6 +133,10 @@ main {
 }
 .btn:hover {
   scale: 1.15;
+  background-color: #eeeeee;
+}
+.btn:hover .icon {
+  scale: 1.2;
 }
 .btn:active {
   scale: 0.95;
@@ -101,41 +151,36 @@ footer {
   height: 80px;
   max-width: 1500px;
   margin: auto;
-  border-top: 1px solid #9f9f9f;
-}
-
-.footer-push {
-  height: 80px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 @media (max-width: 1536px) {
   main, footer {
-    max-width: 1280px;
+    max-width: calc(1280px - 20px);
   }
 }
 @media (max-width: 1280px) {
   main, footer {
-    max-width: 1024px;
+    max-width: calc(1024px - 20px);
   }
 
   .header-dynamic .title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }
 @media (max-width: 1024px) {
   main, footer {
-    max-width: 768px;
+    max-width: calc(768px - 20px);
   }
 }
 @media (max-width: 768px) {
   main, footer {
-    max-width: 640px;
+    max-width: calc(640px - 20px);
   }
 }
 @media (max-width: 640px) {
-  .header-dynamic {
-    margin: 0rem 0.5rem;
-  }
   .header-dynamic .title {
     font-size: 1.2rem;
   }
@@ -146,7 +191,7 @@ footer {
   }
 
   main {
-    max-width: 480px;
+    max-width: calc(480px - 20px);
   }
 
   footer {
@@ -164,19 +209,33 @@ footer {
   }
 }
 @media (max-width: 380px) {
+  body {
+    padding: 0rem 0.3rem;
+  }
+
   main, footer {
     width: 100%;
   }
 
   .header-dynamic .title {
     width: 43%;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
   }
   .header-dynamic .buttons {
     width: 57%;
   }
+  .header-dynamic .buttons .btn:hover {
+    scale: 1;
+  }
   .header-dynamic .buttons .btn:first-child {
     margin-right: 0.5rem;
+  }
+  .header-dynamic .buttons .icon {
+    margin-right: 0.3rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
   }
 }
 
