@@ -90,7 +90,7 @@ body {
   margin-right: 0.7rem;
 }
 .header-dynamic .buttons .icon img {
-  width: 12px;
+  height: 15px;
 }
 .header-dynamic .buttons button {
   display: flex;
