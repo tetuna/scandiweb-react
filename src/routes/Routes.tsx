@@ -8,11 +8,11 @@ export default function () {
        return (
               <BrowserRouter>
                      <Routes>
-                            <Route path="/health" element={<p>OK</p>} />
                             <Route path="/" element={<AppLayout />}>
                                    <Route path="/" element={<Navigate to="/products" />} />
                                    <Route path="/products" element={<ProductList />} />
                                    <Route path="/products/add" element={<ProductAdd />} />
+                                   <Route path="*" element={<Navigate to="/products" />} />
                             </Route>
                      </Routes>
               </BrowserRouter>
